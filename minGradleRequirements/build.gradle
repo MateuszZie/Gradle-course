@@ -1,5 +1,38 @@
+
+if(hasProperty("gradlePropertiesProp")){
+    logger.info("PropertyProp = $gradlePropertiesProp")
+} else {
+    logger.info("PropertyProp don't exist")
+}
+
+if(hasProperty("comandLineProp")){
+    logger.info("ComandLineProp = $comandLineProp")
+} else {
+    logger.info("ComandLineProp don't exist")
+}
+
+project.ext.sayHello = 'Hello!'
+
+if(hasProperty("sayHello")){
+    logger.info("sayHello = $sayHello")
+} else {
+    logger.info("sayHello don't exist")
+}
+
+if(gradle.hasProperty("timestamp")){
+    logger.info("timestamp = ${gradle.timestamp()}")
+} else {
+    logger.info("timestamp don't exist")
+}
+
+
+
+/* gradle unde the hood
+
 logger.info "Info!"
 
 apply {
     println("apply")
 }
+
+ */
