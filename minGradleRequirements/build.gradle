@@ -1,9 +1,5 @@
-defaultTasks 'hello'
+logger.info "Info!"
 
-task ('hello').doLast{
-    println 'Hello World'
-}
-
-task ('test').doLast{
-    println 'Test'
+apply {
+    println("apply")
 }
