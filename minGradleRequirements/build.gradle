@@ -1,3 +1,32 @@
+defaultTasks("hello")
+
+task hello {
+    logger.info("Hello task")
+    description("Hello description")
+    group("Welcome Hello")
+
+    doLast {
+        logger.info("second $name")
+    }
+
+    doFirst {
+        logger.info("first $name")
+    }
+}
+
+
+task hi {
+    logger.info("Hi task")
+}
+
+logger.info(hello.description)
+logger.info(hello.group)
+
+//hi.doLast {
+//    logger.info("Hi task")
+//}
+
+/* gradle properties
 
 if(hasProperty("gradlePropertiesProp")){
     logger.info("PropertyProp = $gradlePropertiesProp")
