@@ -1,4 +1,4 @@
-defaultTasks("hello")
+defaultTasks("hello2", "hello")
 
 task hello {
     logger.info("Hello task")
@@ -6,12 +6,36 @@ task hello {
     group("Welcome Hello")
 
     doLast {
-        logger.info("second $name")
+        logger.info("2 $name")
     }
 
     doFirst {
-        logger.info("first $name")
+        logger.info("1 $name")
     }
+}
+
+hello.doLast { logger.info("3 $name")}
+hello.doLast { logger.info("4 $name")}
+hello.doFirst { logger.info("5 $name")}
+hello.doFirst { logger.info("6 $name")}
+
+task hello2 {
+    description("Hello description")
+    group("Welcome Hello2")
+}
+
+hello2.doFirst{
+    logger.info("1 $name")
+}.doLast{
+    logger.info("2 $name")
+}.doLast{
+    logger.info("3 $name")
+}.doLast{
+    logger.info("4 $name")
+}.doFirst{
+    logger.info("5 $name")
+}.doFirst{
+    logger.info("6 $name")
 }
 
 
