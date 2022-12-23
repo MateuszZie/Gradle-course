@@ -1,4 +1,35 @@
-defaultTasks("hello2", "hello")
+defaultTasks("task4")
+
+task task1 (dependsOn: 'task3') {
+    doLast {
+        logger.info("$name")
+    }
+}
+
+task task2 {
+    doLast {
+        logger.info("$name")
+    }
+}
+
+task task3 {
+    doLast {
+        logger.info("$name")
+    }
+}
+
+task task4 (dependsOn: ['task1', 'task2' ]) {
+    doLast {
+        logger.info("$name")
+    }
+}
+
+
+
+
+
+/*  Task & Actions
+
 
 task hello {
     logger.info("Hello task")
