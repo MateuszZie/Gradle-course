@@ -18,15 +18,13 @@ task task3 {
     }
 }
 
-task task4 (dependsOn: ['task1', 'task2' ]) {
+task task4 (dependsOn: ['task1', tasks.findAll {task-> task.name.startsWith("task2")} ]) {
     doLast {
         logger.info("$name")
     }
 }
 
-
-
-
+logger.info(">>>> ${tasks.findAll {task-> task.name.startsWith("task2")}}")
 
 /*  Task & Actions
 
