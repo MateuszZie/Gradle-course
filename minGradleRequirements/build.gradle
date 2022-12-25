@@ -1,6 +1,8 @@
+import java.util.regex.Matcher
+
 defaultTasks("task4")
 
-task task1 (dependsOn: 'task3') {
+task task1 {
     doLast {
         logger.info("$name")
     }
@@ -18,13 +20,18 @@ task task3 {
     }
 }
 
-task task4 (dependsOn: ['task1', tasks.findAll {task-> task.name.startsWith("task2")} ]) {
+task task4(dependsOn: ['task1', tasks.findAll { task -> task.name.startsWith("task2") }]) {
     doLast {
         logger.info("$name")
     }
 }
 
-logger.info(">>>> ${tasks.findAll {task-> task.name.startsWith("task2")}}")
+logger.info(">>>> ${tasks.findAll { task -> task.name.startsWith("task2") }}")
+
+if (Math.random() > 0.5) {
+    task1.dependsOn(task3, tasks.findAll { task -> task.name.startsWith("task2") })
+}
+
 
 /*  Task & Actions
 
