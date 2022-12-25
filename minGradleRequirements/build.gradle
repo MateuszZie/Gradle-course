@@ -22,7 +22,7 @@ task task3 {
 
 task task4(dependsOn: ['task1', tasks.findAll { task -> task.name.startsWith("task2") }]) {
     doLast {
-        logger.info("$name")
+        logger.info("Task $name . Versions $version ")
     }
 }
 
@@ -30,6 +30,22 @@ logger.info(">>>> ${tasks.findAll { task -> task.name.startsWith("task2") }}")
 
 if (Math.random() > 0.5) {
     task1.dependsOn(task3, tasks.findAll { task -> task.name.startsWith("task2") })
+}
+
+gradle.taskGraph.whenReady {
+    if (gradle.taskGraph.hasTask(task3)) {
+        project.version("1.0")
+    } else {
+        project.version("1.0-SNAPSHOT")
+    }
+}
+
+gradle.taskGraph.beforeTask { task ->
+    logger.info("Before task $name")
+}
+
+gradle.taskGraph.afterTask { task ->
+    logger.info("After task $name")
 }
 
 
