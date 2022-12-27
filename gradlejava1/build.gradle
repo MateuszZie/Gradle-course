@@ -16,16 +16,11 @@ dependencies {
 }
 
 jar {
-    baseName = "$project.name-all"
-    logger.info("some name $baseName")
-
     manifest {
         attributes 'Implementation-Title': 'Some title',
                 'Implementation-Version': project.version,
                 'Created-By': 'Mateusz',
                 'Main-Class': 'com.denofprogramming.random.App'
-
     }
-
-    logger.info("$manifest.attributes")
+    from(project.configurations.runtimeClasspath.collect { File file -> project.zipTree(file) })
 }
