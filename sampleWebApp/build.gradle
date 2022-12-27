@@ -6,6 +6,8 @@ plugins {
 group = 'com.denofprogramming'
 version = '0.0.1-SNAPSHOT'
 
+project.ext.tomcatLocation = "C:/Program Files/Apache Software Foundation/Tomcat 9.0/webapps"
+
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -33,6 +35,11 @@ dependencies {
 
 war{
     archiveName("myWebApp.war")
+}
+
+task deployToTomcat(type: Copy, dependsOn: 'war'){
+    from(war.archiveFile)
+    into("$tomcatLocation")
 }
 
 
