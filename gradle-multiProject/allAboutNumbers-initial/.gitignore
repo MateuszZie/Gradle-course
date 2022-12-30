@@ -77,3 +77,6 @@ local.properties
 /gradle/
 /gradlew
 /gradlew.bat
+
+/pickerNumberApplication1-initial/build/
+/randomNumberGen1-initial/build/
