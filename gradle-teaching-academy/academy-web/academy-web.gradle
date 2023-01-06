@@ -4,7 +4,7 @@ plugins {
 
 description = 'Teaching Academy Web Application.'
 
-ext.tomcatHome = 'C:/software/Apache Software Foundation/apache-tomcat-9.0.1'
+ext.tomcatHome = 'C:/Program Files/Apache Software Foundation/Tomcat 9.0'
 ext.tomcatWebapps = "$tomcatHome/webapps"
 
 
